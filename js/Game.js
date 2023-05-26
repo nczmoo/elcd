@@ -120,6 +120,11 @@ class Game{
 
 	}
 
+	die(){
+		alert('You died!');
+		location.reload();
+	}
+
 	fall(){
 		let posX = this.elotero.x;
 		let posY = this.elotero.y + 2;
@@ -246,7 +251,7 @@ class Game{
 	}
 
 	input(button){
-		console.log(button);
+		//console.log(button);
 		let wasd = { w: 'Up', a: "Left", s: "Down", d: "Right" };
 		if (button == ' ' || button == 'Enter'){
 			this.throw();
@@ -305,7 +310,7 @@ class Game{
 				this.magas[i].y += 2;
 			}
 			if (this.elotero.y == maga.y && maga.x > this.elotero.x && posX < this.elotero.x){
-				alert('DIED');
+				this.die();
 			} else if (this.checkPrincess(maga.y, maga.x, posX, 'sad')){
 
 			}
@@ -369,7 +374,7 @@ class Game{
 		}
 
 		if (this.checkMaga(this.elotero.y, this.elotero.x, posX)){
-			alert("DIE");
+			this.die();
 		} else if (this.checkPrincess(this.elotero.y, this.elotero.x, posX, 'happy') && game.inventory.corn > 0){
 			game.inventory.corn --;
 			game.score ++;
